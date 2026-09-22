@@ -1,0 +1,18 @@
+{
+  "Read-your-writes": {
+    "satisfied": 709,
+    "violated": 291
+  },
+  "Monotonic reads": {
+    "satisfied": 999,
+    "violated": 1
+  },
+  "Monotonic writes": {
+    "satisfied": 1000,
+    "violated": 0
+  },
+  "Writes-follow-reads": {
+    "satisfied": 1000,
+    "violated": 0
+  }
+}

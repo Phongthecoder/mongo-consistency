@@ -1,0 +1,46 @@
+{
+  "during_failure": {
+    "Read-your-writes": {
+      "satisfied": 0,
+      "violated": 0,
+      "unavailable": 500
+    },
+    "Monotonic reads": {
+      "satisfied": 0,
+      "violated": 0,
+      "unavailable": 500
+    },
+    "Monotonic writes": {
+      "satisfied": 0,
+      "violated": 0,
+      "unavailable": 500
+    },
+    "Writes-follow-reads": {
+      "satisfied": 0,
+      "violated": 0,
+      "unavailable": 500
+    }
+  },
+  "after_recovery": {
+    "Read-your-writes": {
+      "satisfied": 243,
+      "violated": 257,
+      "unavailable": 0
+    },
+    "Monotonic reads": {
+      "satisfied": 500,
+      "violated": 0,
+      "unavailable": 0
+    },
+    "Monotonic writes": {
+      "satisfied": 500,
+      "violated": 0,
+      "unavailable": 0
+    },
+    "Writes-follow-reads": {
+      "satisfied": 500,
+      "violated": 0,
+      "unavailable": 0
+    }
+  }
+}

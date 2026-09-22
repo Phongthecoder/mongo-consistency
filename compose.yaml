@@ -1,0 +1,47 @@
+services:
+  mongo1:
+    image: mongo:8
+    container_name: mongo1
+    hostname: mongo1
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    environment:
+      GLIBC_TUNABLES: "glibc.pthread.rseq=1"
+    ports:
+      - "27017:27017"
+    networks:
+      mongo-net:
+        aliases:
+          - mongo1
+
+  mongo2:
+    image: mongo:8
+    container_name: mongo2
+    hostname: mongo2
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    environment:
+      GLIBC_TUNABLES: "glibc.pthread.rseq=1"
+    ports:
+      - "27018:27017"
+    networks:
+      mongo-net:
+        aliases:
+          - mongo2
+
+  mongo3:
+    image: mongo:8
+    container_name: mongo3
+    hostname: mongo3
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
+    environment:
+      GLIBC_TUNABLES: "glibc.pthread.rseq=1"
+    ports:
+      - "27019:27017"
+    networks:
+      mongo-net:
+        aliases:
+          - mongo3
+
+networks:
+  mongo-net:
+    driver: bridge
+
