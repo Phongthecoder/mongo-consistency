@@ -1,7 +1,7 @@
 services:
   client-config2:
     build:
-      context: .
+      context: config2
       dockerfile: Dockerfile.config2
     image: project1-client-config2:1
     working_dir: /lab

@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+.config2.lock
+.config1.lock
+results_config1/
+results_config2/

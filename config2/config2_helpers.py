@@ -177,7 +177,7 @@ def compose_args(*args):
     env=os.environ.copy()
     args0=docker_args()
     if '--context' in args0:env['DOCKER_CONTEXT']=args0[args0.index('--context')+1]
-    return [executable,'-f',str(ROOT/'compose.yaml'),'-f',str(ROOT/'compose.config2.yaml')]+list(args),env
+    return [executable,'-f',str(ROOT.parent/'compose.yaml'),'-f',str(ROOT/'compose.config2.yaml')]+list(args),env
 
 class Worker:
     def __init__(self):
@@ -236,7 +236,7 @@ class Run:
         self.id=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+scenario+('-smoke-' if smoke else '-formal-')+uuid.uuid4().hex[:6]
         self.out=ROOT/'results_config2'/self.id;self.out.mkdir(parents=True)
         self.scenario=scenario;self.trials=trials;self.smoke=smoke;self.models=models
-        files=sorted(set(ROOT.glob('*config2*.py'))|{ROOT/'config2.py',ROOT/'Dockerfile.config2',ROOT/'compose.config2.yaml',ROOT/'compose.yaml',ROOT/'config2_plan.md'})
+        files=sorted(set(ROOT.glob('*config2*.py'))|{ROOT/'config2.py',ROOT/'Dockerfile.config2',ROOT/'compose.config2.yaml',ROOT.parent/'compose.yaml',ROOT/'config2_plan.md'})
         (self.out/'source').mkdir()
         for f in files:shutil.copy2(f,self.out/'source'/f.name)
         self.manifest={'database_name':DB_NAME,'started_at':self.started,'scenario':scenario,'trials_per_model_per_phase':trials,

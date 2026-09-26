@@ -1,0 +1,88 @@
+{
+  "run_directory": "/Users/phongsmac/Coursework/DSA5208/mongo-consistency/config1/results_config1/20260926T025828Z-node-formal-1cfbf0",
+  "config": {
+    "writeConcern": 1,
+    "readConcern": "local",
+    "readPreference": "secondary",
+    "causalConsistency": false,
+    "replicaSet": "rs0",
+    "retryReads": false,
+    "retryWrites": false,
+    "maxTimeMS": 2000,
+    "socketTimeoutMS": 4000
+  },
+  "results": [
+    {
+      "phase": "node_during",
+      "model": "RYW",
+      "trials": 500,
+      "no_violation_observed": 0,
+      "violation": 0,
+      "unavailable": 500,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_during",
+      "model": "MR",
+      "trials": 500,
+      "no_violation_observed": 0,
+      "violation": 0,
+      "unavailable": 500,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_during",
+      "model": "MW",
+      "trials": 500,
+      "no_violation_observed": 0,
+      "violation": 0,
+      "unavailable": 500,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_during",
+      "model": "WFR",
+      "trials": 500,
+      "no_violation_observed": 0,
+      "violation": 0,
+      "unavailable": 500,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_after",
+      "model": "RYW",
+      "trials": 500,
+      "no_violation_observed": 50,
+      "violation": 450,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_after",
+      "model": "MR",
+      "trials": 500,
+      "no_violation_observed": 500,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_after",
+      "model": "MW",
+      "trials": 500,
+      "no_violation_observed": 500,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "node_after",
+      "model": "WFR",
+      "trials": 500,
+      "no_violation_observed": 385,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 115
+    }
+  ]
+}

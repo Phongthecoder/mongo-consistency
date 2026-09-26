@@ -30,33 +30,33 @@ export DOCKER_CONTEXT=colima-consistency-lab
 docker-compose -f compose.yaml up -d
 .venv/bin/python setup_majority.py
 
-docker-compose -f compose.yaml -f compose.config2.yaml up -d --build client-config2
-.venv/bin/python setup_config2.py
+docker-compose -f compose.yaml -f config2/compose.config2.yaml up -d --build client-config2
+.venv/bin/python config2/setup_config2.py
 ```
 
 On Docker Desktop or Linux, select the appropriate Docker context instead of running
 the Colima commands. The launchers require the `docker-compose` executable; ensure it is installed and available on PATH.
-The setup_majority.py and majority_config.py files are included as dependencies of
-the base replica-set bootstrap; the Configuration 2 experiments use config2.py.
+The setup_majority.py and majority_config.py files at the repository root are shared
+dependencies of the base replica-set bootstrap; the Configuration 2 experiments use config2/config2.py.
 
 ## Experiments
 
-Run only one scenario at a time. Fault scripts stop mongo2 or disconnect mongo1 from
+Run only one scenario at a time, from the config2/ directory (`cd config2`). Fault scripts stop mongo2 or disconnect mongo1 from
 the project network and restore the cluster afterwards.
 
 ```bash
 # Short preflight runs
-.venv/bin/python normal_config2_experiment.py --smoke
-.venv/bin/python node_failure_config2_experiment.py --smoke
-.venv/bin/python network_partition_config2_experiment.py --smoke
+../.venv/bin/python normal_config2_experiment.py --smoke
+../.venv/bin/python node_failure_config2_experiment.py --smoke
+../.venv/bin/python network_partition_config2_experiment.py --smoke
 
 # Formal runs
-.venv/bin/python normal_config2_experiment.py
-.venv/bin/python node_failure_config2_experiment.py
-.venv/bin/python network_partition_config2_experiment.py
+../.venv/bin/python normal_config2_experiment.py
+../.venv/bin/python node_failure_config2_experiment.py
+../.venv/bin/python network_partition_config2_experiment.py
 
 # Audit each printed output directory
-.venv/bin/python audit_config2.py results_config2/<run-directory>
+../.venv/bin/python audit_config2.py results_config2/<run-directory>
 ```
 
 Formal sample sizes are 1,000 trials per model under normal operation, 500 per model

@@ -242,6 +242,17 @@ def run_phase(label):
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--smoke", action="store_true",
+        help="3 trials per model per phase; the formal results file is not written",
+    )
+    args = parser.parse_args()
+    if args.smoke:
+        NUM_TESTS = 3
+
     print("NETWORK PARTITION -- CONFIGURATION 1")
     print("=" * 50)
     print(f"Fault target: {PARTITION_CONTAINER} (Primary, port 27017)")
@@ -274,11 +285,14 @@ if __name__ == "__main__":
 
     after_results = run_phase("AFTER RECOVERY")
 
-    with open("network_partition_results.json", "w") as f:
-        json.dump(
-            {"during_partition": during_results, "after_recovery": after_results},
-            f,
-            indent=2,
-        )
+    if args.smoke:
+        print("\nSmoke run: formal results file not written")
+    else:
+        with open("network_partition_config1_results.json", "w") as f:
+            json.dump(
+                {"during_partition": during_results, "after_recovery": after_results},
+                f,
+                indent=2,
+            )
 
-    print("\nResults written to network_partition_results.json")
+        print("\nResults written to network_partition_config1_results.json")

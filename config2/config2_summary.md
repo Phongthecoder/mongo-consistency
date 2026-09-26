@@ -134,7 +134,7 @@ Successful sequences should retain causal consistency. Availability depends on t
 
 In this run, mongo3 became primary and mongo2 remained secondary. RYW completed 57 of 60 trials; three trials encountered majority write timeouts (two at the baseline write and one at W1). MW and WFR each completed all 60 trials without an observed violation. All 60 MR trials could read mongo2 but could not perform R2 on mongo3 because it was now primary. After reconnection, all 240 trials completed without an observed violation.
 
-Unlike the earlier fixed direct writer, this client can send writes to a newly elected primary. A read still fails when its required tag identifies a primary rather than an eligible secondary. These results must therefore be interpreted with the recorded roles and failing operation stages, not attributed solely to changing causal consistency from OFF to ON.
+This client can send writes to a newly elected primary. A read still fails when its required tag identifies a primary rather than an eligible secondary. These results must therefore be interpreted with the recorded roles and failing operation stages. Configuration 1 now uses the same client and routing, so availability differences between the two runs also depend on which node was elected in each run.
 
 ---
 
@@ -150,6 +150,15 @@ Unlike the earlier fixed direct writer, this client can send writes to a newly e
 
 Across **8,480 formal trials**, there were **6417 with no observed violation, 0 violations, 2063 unavailable and 0 inconclusive**. The 60-case preflight and optional standalone RYW entry point are excluded.
 
+| Model | Normal | Node failure (during / after) | Partition (during / after) |
+|---|---:|---:|---:|
+| Read-your-writes | 0.00% | 100% unavail / 0.00% | 0.00%, 5.00% unavail / 0.00% |
+| Monotonic reads | 0.00% | 100% unavail / 0.00% | 100% unavail / 0.00% |
+| Monotonic writes | 0.00% | 100% unavail / 0.00% | 0.00% / 0.00% |
+| Writes-follow-reads | 0.00% | 100% unavail / 0.00% | 0.00% / 0.00% |
+
+Percentages are violation rates except where marked "unavail", which is the unavailability rate during the fault window.
+
 The observations agree with the prediction for the tested schedules: no completed check violated its consistency predicate. The results should be read against the conditional prediction: completed operations should preserve causal order, while unavailable targets may prevent completion. No observed violation is supporting evidence for the sampled schedules, not a universal proof. Errors are not stale successful results.
 
 ## Audit and limitations
@@ -159,7 +168,7 @@ The independent audits checked 8480 trial classifications and 35097 application 
 - All nodes and the client share one host/VM. There is no concurrent application workload or forced replication delay; the earlier lab also remains running in that VM.
 - Faults occur before each phase. This does not exhaust all possible mid-session failure timings.
 - MW and WFR use finite observation windows and diagnostic evidence from one secondary.
-- The ON setup uses a shared replica-set client inside Docker; the OFF setup used independent direct clients on the host. Routing, failover, Python runtime and network timing differ, so this is not a controlled single-variable performance comparison.
+- Configuration 1 (OFF) now uses the same client container, replica-set client, routing, test functions and fault procedure, so the comparison differs only in concern and session settings. The two configurations were still run at different times on a shared host, so timing-dependent rates are not exactly repeatable. (An earlier Configuration 1 run used independent direct clients on the host; it is archived in `config1/archive_direct_connection/`.)
 - Fault/recovery trials use short timeouts. Write errors may leave an unknown outcome; they are never treated as proof that no write occurred.
 
 ## Files and reproduction
@@ -167,17 +176,18 @@ The independent audits checked 8480 trial classifications and 35097 application 
 Configuration: config2.py. Four test functions: normal_config2_experiment.py. Each fault has its own configuration and experiment entry point. config2_helpers.py provides shared logging, worker communication, waits, phase execution and recovery. Source is copied to the client container before execution; Desktop bind mounting is not required.
 
 ```bash
-DOCKER_CONTEXT=colima-consistency-lab docker-compose -f compose.yaml -f compose.config2.yaml up -d --build client-config2
-.venv/bin/python setup_config2.py
-.venv/bin/python normal_config2_experiment.py
-.venv/bin/python node_failure_config2_experiment.py
-.venv/bin/python network_partition_config2_experiment.py
-.venv/bin/python audit_config2.py results_config2/<run-directory>
+docker-compose -f compose.yaml -f config2/compose.config2.yaml up -d --build client-config2
+.venv/bin/python config2/setup_config2.py
+cd config2
+../.venv/bin/python normal_config2_experiment.py
+../.venv/bin/python node_failure_config2_experiment.py
+../.venv/bin/python network_partition_config2_experiment.py
+../.venv/bin/python audit_config2.py results_config2/<run-directory>
 ```
 
 These commands assume the existing rs0 is already initialized. For a fresh project deployment, start the base compose services and run the existing setup_majority.py bootstrap before configuring Config 2 tags.
 
-The host requires PyMongo (`.venv/bin/python -m pip install -r requirements.txt`). See README.md for Docker context details. Each scenario accepts --smoke. Run scenarios sequentially.
+The host requires PyMongo (`.venv/bin/python -m pip install -r requirements.txt`). See [README_CONFIG2.md](README_CONFIG2.md) for Docker context details. Each scenario accepts --smoke. Run scenarios sequentially.
 
 Formal evidence directories:
 

@@ -1,0 +1,10 @@
+services:
+  client-config1:
+    build:
+      context: config1
+      dockerfile: Dockerfile.config1
+    image: project1-client-config1:1
+    working_dir: /lab
+    command: [sleep, infinity]
+    networks:
+      - mongo-net
