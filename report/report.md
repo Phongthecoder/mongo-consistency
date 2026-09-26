@@ -1,7 +1,7 @@
 ---
 title: "Client-Centric Consistency in MongoDB under Tunable Consistency Settings"
 subtitle: "DSA5208 Project 1"
-author: "[Group members: names and student numbers]"
+author: ",Yu Runze"
 date: "September 2026"
 ---
 
@@ -587,7 +587,9 @@ MongoDB documentation accessed September 2026.
 
 # AI usage
 
-- **Configuration 2:** OpenAI Codex assisted with implementing the Configuration 2 harness, running it, checking the evidence and writing documentation, as recorded in `config2/config2_plan.md`.
+- **Configuration 2:** OpenAI Codex assisted with:
+  - implementing the Configuration 2 harness;
+  - run and audit the Configuration 2 experiments.
 - **Configuration 1 and this report:** Claude Code (Anthropic) was used to:
   - port Configuration 1 onto the shared harness;
   - write the Configuration 1 predictions before the formal runs;
