@@ -1,7 +1,7 @@
 ---
 title: "Client-Centric Consistency in MongoDB under Tunable Consistency Settings"
 subtitle: "DSA5208 Project 1"
-author: ",Yu Runze"
+author: "Pham Thanh Phong, Yu Runze"
 date: "September 2026"
 ---
 
