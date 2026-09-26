@@ -1,0 +1,192 @@
+[
+  {
+    "type": "recovery",
+    "roles": {
+      "mongo1": "PRIMARY",
+      "mongo2": "SECONDARY",
+      "mongo3": "SECONDARY"
+    },
+    "readbacks": [
+      {
+        "_id": "recovery-98a033b535e04f33b8cce6ecc4ea1f3b",
+        "version": 1
+      },
+      {
+        "_id": "recovery-98a033b535e04f33b8cce6ecc4ea1f3b",
+        "version": 1
+      },
+      {
+        "_id": "recovery-98a033b535e04f33b8cce6ecc4ea1f3b",
+        "version": 1
+      }
+    ]
+  },
+  {
+    "type": "configuration",
+    "value": {
+      "changed": false,
+      "config": {
+        "_id": "rs0",
+        "version": 3,
+        "term": 316,
+        "members": [
+          {
+            "_id": 0,
+            "host": "mongo1:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 2.0,
+            "tags": {
+              "node": "mongo1"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          },
+          {
+            "_id": 1,
+            "host": "mongo2:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 1.0,
+            "tags": {
+              "node": "mongo2"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          },
+          {
+            "_id": 2,
+            "host": "mongo3:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 1.0,
+            "tags": {
+              "node": "mongo3"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          }
+        ],
+        "protocolVersion": 1,
+        "writeConcernMajorityJournalDefault": true,
+        "settings": {
+          "chainingAllowed": true,
+          "heartbeatIntervalMillis": 2000,
+          "heartbeatTimeoutSecs": 10,
+          "electionTimeoutMillis": 10000,
+          "catchUpTimeoutMillis": -1,
+          "catchUpTakeoverDelayMillis": 30000,
+          "getLastErrorModes": {},
+          "getLastErrorDefaults": {
+            "w": 1,
+            "wtimeout": 0
+          },
+          "replicaSetId": {
+            "$oid": "6ab166824da3d74da11f504c"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "recovery",
+    "roles": {
+      "mongo1": "PRIMARY",
+      "mongo2": "SECONDARY",
+      "mongo3": "SECONDARY"
+    },
+    "readbacks": [
+      {
+        "_id": "recovery-b5e806c6c1f647b88ecef7f86503a5e7",
+        "version": 1
+      },
+      {
+        "_id": "recovery-b5e806c6c1f647b88ecef7f86503a5e7",
+        "version": 1
+      },
+      {
+        "_id": "recovery-b5e806c6c1f647b88ecef7f86503a5e7",
+        "version": 1
+      }
+    ]
+  },
+  {
+    "type": "versions",
+    "value": {
+      "mongodb": "8.3.11",
+      "python": "3.12.14",
+      "pymongo": "4.16.0",
+      "replica_config": {
+        "_id": "rs0",
+        "version": 3,
+        "term": 316,
+        "members": [
+          {
+            "_id": 0,
+            "host": "mongo1:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 2.0,
+            "tags": {
+              "node": "mongo1"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          },
+          {
+            "_id": 1,
+            "host": "mongo2:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 1.0,
+            "tags": {
+              "node": "mongo2"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          },
+          {
+            "_id": 2,
+            "host": "mongo3:27017",
+            "arbiterOnly": false,
+            "buildIndexes": true,
+            "hidden": false,
+            "priority": 1.0,
+            "tags": {
+              "node": "mongo3"
+            },
+            "secondaryDelaySecs": 0,
+            "votes": 1
+          }
+        ],
+        "protocolVersion": 1,
+        "writeConcernMajorityJournalDefault": true,
+        "settings": {
+          "chainingAllowed": true,
+          "heartbeatIntervalMillis": 2000,
+          "heartbeatTimeoutSecs": 10,
+          "electionTimeoutMillis": 10000,
+          "catchUpTimeoutMillis": -1,
+          "catchUpTakeoverDelayMillis": 30000,
+          "getLastErrorModes": {},
+          "getLastErrorDefaults": {
+            "w": 1,
+            "wtimeout": 0
+          },
+          "replicaSetId": {
+            "$oid": "6ab166824da3d74da11f504c"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "image",
+    "value": "[\n    {\n        \"Id\": \"sha256:639cecb5134d87bdeb950bad44e76fbf45168c3db6082ca017bf6de57fd444f1\",\n        \"RepoTags\": [\n            \"project1-client-config1:1\"\n        ],\n        \"RepoDigests\": [\n            \"project1-client-config1@sha256:639cecb5134d87bdeb950bad44e76fbf45168c3db6082ca017bf6de57fd444f1\"\n        ],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-09-26T01:47:10.514180763Z\",\n        \"Config\": {\n            \"Env\": [\n                \"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"LANG=C.UTF-8\",\n                \"GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305\",\n                \"PYTHON_VERSION=3.12.14\",\n                \"PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a\",\n                \"PYTHONDONTWRITEBYTECODE=1\"\n            ],\n            \"Cmd\": [\n                \"python3\"\n            ],\n            \"WorkingDir\": \"/lab\",\n            \"Labels\": {\n                \"com.docker.compose.project\": \"mongo-consistency\",\n                \"com.docker.compose.service\": \"client-config1\",\n                \"com.docker.compose.version\": \"5.5.1\"\n            }\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 233015915,\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:8227a1264c7ff2f8bd125b585e62c1cec77dd2099c985c33e08d34292d06144f\",\n                \"sha256:77e3d8b6f2ffedf0e56807fd677c6ebb630288d92163c762271391b3f9100826\",\n                \"sha256:bb98c47a575f471443d45d5e96aab7c0e646879bf372ba771288b008362ffc52\",\n                \"sha256:d9a454691b8952308fa3b779dac6aabd4faab3cd0f9d1fdf56820cbeb6637fbd\",\n                \"sha256:df8a47d151c953e0820a59cc5797cb28d56ac7ec8e75ae7118e41680c787f5b9\",\n                \"sha256:4ba0113fc591ad08a703213cfafbe34398ef8d452a23934023b330a4c80c475b\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-09-26T02:57:00.241161716Z\"\n        },\n        \"Descriptor\": {\n            \"mediaType\": \"application/vnd.oci.image.index.v1+json\",\n            \"digest\": \"sha256:639cecb5134d87bdeb950bad44e76fbf45168c3db6082ca017bf6de57fd444f1\",\n            \"size\": 856\n        },\n        \"Identity\": {\n            \"Build\": [\n                {\n                    \"Ref\": \"j00u9hy1slw4mton49drz3xc7\",\n                    \"CreatedAt\": \"2026-09-26T02:57:00.244278966Z\"\n                }\n            ]\n        }\n    }\n]\n"
+  }
+]

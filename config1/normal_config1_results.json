@@ -1,0 +1,52 @@
+{
+  "run_directory": "/Users/phongsmac/Coursework/DSA5208/mongo-consistency/config1/results_config1/20260926T025809Z-normal-formal-bd7852",
+  "config": {
+    "writeConcern": 1,
+    "readConcern": "local",
+    "readPreference": "secondary",
+    "causalConsistency": false,
+    "replicaSet": "rs0",
+    "retryReads": false,
+    "retryWrites": false,
+    "maxTimeMS": 2000,
+    "socketTimeoutMS": 4000
+  },
+  "results": [
+    {
+      "phase": "normal",
+      "model": "RYW",
+      "trials": 1000,
+      "no_violation_observed": 2,
+      "violation": 998,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "normal",
+      "model": "MR",
+      "trials": 1000,
+      "no_violation_observed": 998,
+      "violation": 2,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "normal",
+      "model": "MW",
+      "trials": 1000,
+      "no_violation_observed": 1000,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "normal",
+      "model": "WFR",
+      "trials": 1000,
+      "no_violation_observed": 1000,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    }
+  ]
+}

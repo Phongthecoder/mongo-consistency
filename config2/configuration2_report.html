@@ -53,8 +53,8 @@ python3 -m venv .venv
 docker-compose -f compose.yaml up -d
 .venv/bin/python setup_majority.py
 
-docker-compose -f compose.yaml -f compose.config2.yaml   up -d --build client-config2
-.venv/bin/python setup_config2.py
+docker-compose -f compose.yaml -f config2/compose.config2.yaml up -d --build client-config2
+.venv/bin/python config2/setup_config2.py
 </code></pre>
 <p>The setup scripts initialize or validate <code>rs0</code>, assign member tags, verify roles, and check that a fresh majority-written marker is readable on all three nodes. The client connects through the replica-set URI:</p>
 <pre><code class="language-text">mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0
@@ -329,11 +329,11 @@ docker-compose -f compose.yaml -f compose.config2.yaml   up -d --build client-co
 </ol>
 <p><em>MongoDB documentation accessed 25 September 2026.</em></p>
 <h2 id="reproduction-and-data">Reproduction and Data</h2>
-<p>Settings are defined in <code>config2.py</code>. After deployment, run the three scenarios sequentially:</p>
-<pre><code class="language-bash">.venv/bin/python normal_config2_experiment.py
-.venv/bin/python node_failure_config2_experiment.py
-.venv/bin/python network_partition_config2_experiment.py
-.venv/bin/python audit_config2.py results_config2/&lt;run-directory&gt;
+<p>Settings are defined in <code>config2.py</code>. After deployment, run the three scenarios sequentially from the <code>config2/</code> directory:</p>
+<pre><code class="language-bash">../.venv/bin/python normal_config2_experiment.py
+../.venv/bin/python node_failure_config2_experiment.py
+../.venv/bin/python network_partition_config2_experiment.py
+../.venv/bin/python audit_config2.py results_config2/&lt;run-directory&gt;
 </code></pre>
 <p>Formal records are stored under <code>results_config2/</code>:</p>
 <ul>

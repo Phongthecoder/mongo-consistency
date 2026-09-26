@@ -320,6 +320,17 @@ TESTS = [
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--smoke", action="store_true",
+        help="3 trials per model per phase; the formal results file is not written",
+    )
+    args = parser.parse_args()
+    if args.smoke:
+        NUM_TESTS = 3
+
     import json
 
     print("NORMAL CONDITION — CONFIGURATION 1")
@@ -337,7 +348,10 @@ if __name__ == "__main__":
         print(f"  Violated:    {bad}")
         print(f"  Violation %: {100 * bad / NUM_TESTS:.2f}%")
 
-    with open("normal_config1_results.json", "w") as f:
-        json.dump(results, f, indent=2)
+    if args.smoke:
+        print("\nSmoke run: formal results file not written")
+    else:
+        with open("normal_config1_results.json", "w") as f:
+            json.dump(results, f, indent=2)
 
-    print("\nResults written to normal_config1_results.json")
+        print("\nResults written to normal_config1_results.json")

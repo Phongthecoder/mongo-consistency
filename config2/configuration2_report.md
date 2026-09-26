@@ -38,8 +38,8 @@ python3 -m venv .venv
 docker-compose -f compose.yaml up -d
 .venv/bin/python setup_majority.py
 
-docker-compose -f compose.yaml -f compose.config2.yaml   up -d --build client-config2
-.venv/bin/python setup_config2.py
+docker-compose -f compose.yaml -f config2/compose.config2.yaml up -d --build client-config2
+.venv/bin/python config2/setup_config2.py
 ```
 
 The setup scripts initialize or validate `rs0`, assign member tags, verify roles, and check that a fresh majority-written marker is readable on all three nodes. The client connects through the replica-set URI:
@@ -181,13 +181,13 @@ Configuration 2 preserved the tested consistency predicates in all 6,417 complet
 
 ## Reproduction and Data
 
-Settings are defined in `config2.py`. After deployment, run the three scenarios sequentially:
+Settings are defined in `config2.py`. After deployment, run the three scenarios sequentially from the `config2/` directory:
 
 ```bash
-.venv/bin/python normal_config2_experiment.py
-.venv/bin/python node_failure_config2_experiment.py
-.venv/bin/python network_partition_config2_experiment.py
-.venv/bin/python audit_config2.py results_config2/<run-directory>
+../.venv/bin/python normal_config2_experiment.py
+../.venv/bin/python node_failure_config2_experiment.py
+../.venv/bin/python network_partition_config2_experiment.py
+../.venv/bin/python audit_config2.py results_config2/<run-directory>
 ```
 
 Formal records are stored under `results_config2/`:

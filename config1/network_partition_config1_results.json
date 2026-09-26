@@ -1,0 +1,88 @@
+{
+  "run_directory": "/Users/phongsmac/Coursework/DSA5208/mongo-consistency/config1/results_config1/20260926T031551Z-partition-formal-6c31ab",
+  "config": {
+    "writeConcern": 1,
+    "readConcern": "local",
+    "readPreference": "secondary",
+    "causalConsistency": false,
+    "replicaSet": "rs0",
+    "retryReads": false,
+    "retryWrites": false,
+    "maxTimeMS": 2000,
+    "socketTimeoutMS": 4000
+  },
+  "results": [
+    {
+      "phase": "partition_during",
+      "model": "RYW",
+      "trials": 60,
+      "no_violation_observed": 0,
+      "violation": 60,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "partition_during",
+      "model": "MR",
+      "trials": 60,
+      "no_violation_observed": 0,
+      "violation": 0,
+      "unavailable": 60,
+      "inconclusive": 0
+    },
+    {
+      "phase": "partition_during",
+      "model": "MW",
+      "trials": 60,
+      "no_violation_observed": 60,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "partition_during",
+      "model": "WFR",
+      "trials": 60,
+      "no_violation_observed": 53,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 7
+    },
+    {
+      "phase": "partition_after",
+      "model": "RYW",
+      "trials": 60,
+      "no_violation_observed": 1,
+      "violation": 59,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "partition_after",
+      "model": "MR",
+      "trials": 60,
+      "no_violation_observed": 2,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 58
+    },
+    {
+      "phase": "partition_after",
+      "model": "MW",
+      "trials": 60,
+      "no_violation_observed": 60,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 0
+    },
+    {
+      "phase": "partition_after",
+      "model": "WFR",
+      "trials": 60,
+      "no_violation_observed": 3,
+      "violation": 0,
+      "unavailable": 0,
+      "inconclusive": 57
+    }
+  ]
+}

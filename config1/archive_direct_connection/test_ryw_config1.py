@@ -1,3 +1,4 @@
+import argparse
 import time
 
 from pymongo import MongoClient
@@ -15,6 +16,11 @@ from pymongo.write_concern import WriteConcern
 # ============================================================
 
 NUM_TESTS = 1000
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--smoke", action="store_true", help="run 3 trials instead of the full count")
+if parser.parse_args().smoke:
+    NUM_TESTS = 3
 
 # Direct connection to primary
 primary = MongoClient(

@@ -255,6 +255,17 @@ def run_phase(label):
 
 
 if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--smoke", action="store_true",
+        help="3 trials per model per phase; the formal results file is not written",
+    )
+    args = parser.parse_args()
+    if args.smoke:
+        NUM_TESTS = 3
+
     print("NODE FAILURE -- CONFIGURATION 1")
     print("=" * 50)
     print(f"Fault target: {FAILURE_CONTAINER} (Secondary 1, port 27018)")
@@ -276,11 +287,14 @@ if __name__ == "__main__":
 
     after_results = run_phase("AFTER RECOVERY")
 
-    with open("node_failure_results.json", "w") as f:
-        json.dump(
-            {"during_failure": during_results, "after_recovery": after_results},
-            f,
-            indent=2,
-        )
+    if args.smoke:
+        print("\nSmoke run: formal results file not written")
+    else:
+        with open("node_failure_config1_results.json", "w") as f:
+            json.dump(
+                {"during_failure": during_results, "after_recovery": after_results},
+                f,
+                indent=2,
+            )
 
-    print("\nResults written to node_failure_results.json")
+        print("\nResults written to node_failure_config1_results.json")
